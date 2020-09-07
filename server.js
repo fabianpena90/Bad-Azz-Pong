@@ -1,4 +1,4 @@
-const express = require('express')
+const express = require("express")
 const app = express();
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
@@ -12,7 +12,7 @@ app.get("/", function (req, res) {
 });
 
 // Listening when accessed by new user
-io.on('connection', (socket) => {
+io.on("connection", (socket) => {
   console.log('a user connected');
  
 });
