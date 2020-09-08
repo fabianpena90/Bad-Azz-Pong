@@ -3,11 +3,11 @@ const canvas = document.querySelector("canvas");
 canvas.width = 850;
 canvas.height = 650;
 const ctx = canvas.getContext("2d");
-const table = new Image()
-table.src = "/public/img/table.jpg"
-let id = null
-let score1 = 0
-let score2 = 0
+const table = new Image();
+table.src = "/public/img/table.jpg";
+let id = null;
+let score1 = 0;
+let score2 = 0;
 
 // Rackets Class
 class Rackets {
@@ -72,7 +72,7 @@ function draw() {
 
   // Adding collision with Paddles
   if (racket2.x < x + ballRadius &&
-    //racket2.x + racket2.w > x &&
+    racket2.x + racket2.w > x &&
     racket2.y < y + ballRadius &&
     racket2.y + racket2.h > y) {
     dx = -dx;
@@ -129,16 +129,13 @@ window.onkeydown = function (e) {
 
 }
 
-
-
-
 function animate() {
   id = window.requestAnimationFrame(animate);
   ctx.drawImage(table, 0, 0, canvas.width, canvas.height);
   racket1.drawRackets()
   racket2.drawRackets()
   drawBall();
-  drawScore()
+  drawScore();
 }
 
 animate()
