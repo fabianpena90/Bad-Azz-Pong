@@ -11,6 +11,10 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + "/index.html");
 });
 
+app.get("/game", function(req, res) {
+  res.sendFile(__dirname + "/game.html")
+})
+
 // Listening when accessed by new user
 io.on("connection", (socket) => {
   console.log('a user connected');

@@ -1,70 +1,93 @@
-// const socket = io(); // adding Socket.io 
-const canvas = document.querySelector('canvas');
-const ctx = canvas.getContext('2d');
-canvas.width = 800;
-canvas.height = 600;
-const pingPongTable = new Image()
-pingPongTable.src = "pingpong_table.jpg"
-const id = null
+const canvas = document.querySelector("canvas");
+canvas.width = 850;
+canvas.height = 650;
+const ctx = canvas.getContext("2d");
+const table = new Image()
+table.src = "/public/img/table.jpg"
+let id = null
+
+// Creating Ball
+let ballRadius = 10;
+let x = canvas.width / 2;
+let y = canvas.height - 30;
+let dx = 2;
+let dy = -2;
+
+// Funtion to draw ball
+function drawBall() {
+  ctx.beginPath();
+  ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+  ctx.fillStyle = "#fff";
+  ctx.fill();
+  ctx.closePath();
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  drawBall();
+
+  if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
+    dx = -dx;
+  }
+  if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {
+    dy = -dy;
+  }
+
+  x += dx;
+  y += dy;
+}
+
+setInterval(draw, 10);
+
+// Rackets Class
+class Rackets {
+  constructor(x, y, w, h) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    this.color = "#333";
+  }
+  drawRackets = () => {
+    ctx.fillStyle = this.color;
+    ctx.fillRect(this.x, this.y, this.w, this.h);
+  }
+}
+
+// Player1 and player2
+let racket1 = new Rackets(10, 260, 20, 150)
+let racket2 = new Rackets(820, 260, 20, 150)
 
 
 
-// // Score game
-// let leftScore = 0;
-// let rightScore = 0;
+window.onkeydown = function (e) {
+  console.log(e.key);
+  switch (e.key) {
+    case 'ArrowUp':
+      racket1.y -= 20
+      break;
+    case 'ArrowDown':
+      racket1.y += 20
+      break;
+    case 'w':
+      racket2.y -= 20
+      break;
+    case 's':
+      racket2.y += 20
+      break;
+  }
 
-// // Create pong ball
-// let ball = ctx.arc(100, 75, 10, 0, 2 * Math.PI);
+}
 
-// Drawing rectangles
-// class Rectangles {
-//   constructor(img, x, y, width, height, speed, color) {
-//     this.img = img
-//     this.x = x;
-//     this.y = y;
-//     this.width = width;
-//     this.height = height;
-//     this.speed = speed;
-//     this.color = color
-//   }
-//   drawReact = () => {
-//     context.fillStyle = '#fff';
-//     context.fillRect(this.x, this.y, this.width, this.height)
-//   }
-// }
 
-// // Create ball
-// let speed = 2
-// let radius = 10
-// class Ball {
-//   constructor(x, y, width, height, radius, speed) {
-//     this.x = x;
-//     this.y = y;
-//     this.width = width;
-//     this.height = height;
-//     this.radius = radius;
-//     this.speed = speed;
-//   }
-//   drawBall = () => {
-//     ctx.beginPath()
-//     ctx.arc(100, 75, this.radius, 0, 2 * Math.PI)
-//   }
-// }
 
-// class PingPongTable {
-//   constructor(img, x, y, w, h){
-//     this.img = img;
-//     this.x = x;
-//     this.y = y;
-//     this.w = w;
-//     this.h = h;
-//   }
-//   drawbackground() {
-//     ctx.drawImage(this.img, this.x, this.y, this.w, this.h)
-//   }
-// }
 
 function animate() {
   id = window.requestAnimationFrame(animate);
-  ctx.drawImage(pingPongTable, 0, 0, 300, 150)
+  ctx.drawImage(table, 0, 0, canvas.width, canvas.height);
+  racket1.drawRackets()
+  racket2.drawRackets()
+  drawBall();
 }
+
+animate()
