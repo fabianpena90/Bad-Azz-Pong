@@ -3,7 +3,7 @@ canvas.width = 850;
 canvas.height = 650;
 const ctx = canvas.getContext("2d");
 const table = new Image();
-table.src = "/public/img/table.jpg";
+table.src = "img/table.jpg";
 let id = null;
 let score1 = 0;
 let score2 = 0;
@@ -97,20 +97,20 @@ function drawScore() {
 }
 
 // Mouse Paddles Control
-// let isHovering = false
-// canvas.addEventListener('mouseenter', e => {
-//   isHovering = true
-// });
+let isHovering = false
+canvas.addEventListener('mouseenter', e => {
+  isHovering = true
+});
 
-// canvas.addEventListener('mouseleave', e => {
-//   isHovering = false
-// });
+canvas.addEventListener('mouseleave', e => {
+  isHovering = false
+});
 
-// canvas.addEventListener('mousemove', e => {
-//   if (isHovering === true) {
-//     racket1.y = e.offsetY - (racket1.h/2)
-//   }
-// });
+canvas.addEventListener('mousemove', e => {
+  if (isHovering === true) {
+    racket1.y = e.offsetY - (racket1.h/2)
+  }
+});
 
 window.onkeydown = function (e) {
   console.log(e.key);
