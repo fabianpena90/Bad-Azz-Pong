@@ -1,4 +1,4 @@
-# Bad-Azz-Pong
+# Bad-A$$-Pong
 Simple pong game created with HTML, CSS, JavaScript, Canvas & Socket.io
 
 ## Table of Contents
