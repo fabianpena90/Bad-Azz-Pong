@@ -1,5 +1,5 @@
 # Bad-A$$-Pong
-Simple pong game created with HTML, CSS, JavaScript, Canvas & Socket.io
+Simple pong game created with HTML, CSS, JavaScript, Canvas, Express & Socket.io
 
 ## Table of Contents
 - General Info
@@ -19,3 +19,4 @@ We hope you enjoy it and share the word with your friends to make our game bigge
 - Canvas
 - JavaScript
 - Socket.io 2.0
+- Express 4.15.2
