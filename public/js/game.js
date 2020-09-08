@@ -7,6 +7,7 @@ table.src = "/public/img/table.jpg";
 let id = null;
 let score1 = 0;
 let score2 = 0;
+let winningScore = 10
 
 // Rackets Class
 class Rackets {
@@ -51,6 +52,7 @@ function draw() {
     console.log("right");
     score1++;
     clearInterval(interval);
+    
   } else if (x + dx < ballRadius) {
     console.log("left");
     score2++;
@@ -69,6 +71,7 @@ function draw() {
     racket1.y + racket1.h > y
   ) {
     dx = -dx;
+    score1++;
   }
 
   // Adding collision with Paddles
@@ -79,6 +82,7 @@ function draw() {
     racket2.y + racket2.h > y
   ) {
     dx = -dx;
+    score2++;
   }
 
   x += dx;
@@ -113,7 +117,7 @@ function drawScore() {
 // });
 
 window.onkeydown = function (e) {
-  console.log(e.key);
+  // console.log(e.key);
   switch (e.key) {
     case "ArrowUp":
       racket2.y -= 40;

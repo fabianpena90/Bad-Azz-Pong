@@ -1,3 +1,7 @@
+/* body {
+  overflow: hidden;
+} */
+
 section.chat__section {
   width: 300px;
   background: #fff;
