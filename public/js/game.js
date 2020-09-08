@@ -3,7 +3,13 @@ canvas.width = 850;
 canvas.height = 650;
 const ctx = canvas.getContext("2d");
 const table = new Image();
-table.src = "img/table.jpg";
+document.querySelector("#create-room").onclick = function (e) {
+  console.log(e);
+  socket.emit("create-room", { socketId });
+};
+
+table.src = "../img/table.jpg";
+console.log(table);
 let id = null;
 let score1 = 0;
 let score2 = 0;
@@ -97,18 +103,18 @@ function drawScore() {
 }
 
 // Mouse Paddles Control
-let isHovering = false
-canvas.addEventListener('mouseenter', e => {
-  isHovering = true
+let isHovering = false;
+canvas.addEventListener("mouseenter", (e) => {
+  isHovering = true;
 });
 
-canvas.addEventListener('mouseleave', e => {
-  isHovering = false
+canvas.addEventListener("mouseleave", (e) => {
+  isHovering = false;
 });
 
-canvas.addEventListener('mousemove', e => {
+canvas.addEventListener("mousemove", (e) => {
   if (isHovering === true) {
-    racket1.y = e.offsetY - (racket1.h/2)
+    racket1.y = e.offsetY - racket1.h / 2;
   }
 });
 
