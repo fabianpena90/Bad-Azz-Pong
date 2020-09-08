@@ -9,7 +9,7 @@ document.querySelector("#create-room").onclick = function (e) {
   socket.emit("create-room", { socketId });
 };
 
-// console.log(table);
+table.src = "../img/table.jpg";
 let id = null;
 let score1 = 0;
 let score2 = 0;
