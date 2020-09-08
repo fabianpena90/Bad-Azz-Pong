@@ -1,3 +1,4 @@
+const socket = io(); // adding Socket.io  
 const canvas = document.querySelector("canvas");
 canvas.width = 850;
 canvas.height = 650;
