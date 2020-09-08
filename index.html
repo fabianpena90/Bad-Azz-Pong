@@ -36,7 +36,12 @@
 
     <!-- >>>>>>>>>>>>>>>>>>>>>>Logo Begins<<<<<<<<<<<<<<<<<<<< -->
     <div id="logo">
-      <img src="./public/img/logo.png" alt="logo" data-speed="5" class="parallax" />
+      <img
+        src="./public/img/logo.png"
+        alt="logo"
+        data-speed="5"
+        class="parallax"
+      />
     </div>
     <!-- >>>>>>>>>>>>>>>>>>>>>>Logo End<<<<<<<<<<<<<<<<<<<< -->
 
@@ -45,20 +50,17 @@
       <div class="form-box">
         <form action="">
           <div class="inputBx">
-            <input type="text" id="p1-name" placeholder="Player 1" />
-          </div>
-          <h2 class="versus">Vs</h2>
-          <div class="inputBx">
-            <input type="text" placeholder="Player 2" />
+            <input type="text" id="p-name" placeholder="Your Name" />
           </div>
         </form>
       </div>
       <div class="button">
-        <input type="submit" value="Lets Play!" />
+        <input type="submit" value="Lets Play!" onclick="submit()" />
       </div>
     </section>
     <!-- >>>>>>>>>>>>>>>>>>>>>>User input form End<<<<<<<<<<<<<<<<<<<< -->
 
     <script type="text/javascript" src="./public/js/logo-parallax.js"></script>
+    <script type="text/javascript" src="./public/js/player-name.js"></script>
   </body>
 </html>

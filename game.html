@@ -3,14 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./public/css/chat.css" />
     <title>BAD A$$ PONG</title>
   </head>
   <body>
     <h1>BAD A$$ PONG</h1>
     <canvas id="canvas"></canvas>
 
+    <section class="chat__section">
+      <div class="logo-bx">
+        <img height="40" src="./public/img/logo.png" alt="" />
+        <h1>Bada$$ Chat</h1>
+      </div>
+      <div class="message__area"></div>
+      <div>
+        <textarea
+          id="textarea"
+          cols="30"
+          rows="1"
+          placeholder="Write a message..."
+        ></textarea>
+      </div>
+    </section>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      const socket = io();
+      const urlParams = new URLSearchParams(window.location.search);
+      const player = urlParams.get("player");
+    </script>
     <script type="text/javascript" src="./public/js/game.js"></script>
+    <script type="text/javascript" src="./public/js/chat.js"></script>
+    <script type="text/javascript" src="./public/js/player-name.js"></script>
   </body>
 </html>

@@ -1,11 +1,10 @@
-const socket = io(); // adding Socket.io  
 const canvas = document.querySelector("canvas");
 canvas.width = 850;
 canvas.height = 650;
 const ctx = canvas.getContext("2d");
-const table = new Image()
-table.src = "/public/img/table.jpg"
-let id = null
+const table = new Image();
+table.src = "/public/img/table.jpg";
+let id = null;
 
 // Creating Ball
 let ballRadius = 10;
@@ -52,43 +51,37 @@ class Rackets {
   drawRackets = () => {
     ctx.fillStyle = this.color;
     ctx.fillRect(this.x, this.y, this.w, this.h);
-  }
+  };
 }
 
 // Player1 and player2
-let racket1 = new Rackets(10, 260, 20, 150)
-let racket2 = new Rackets(820, 260, 20, 150)
-
-
+let racket1 = new Rackets(10, 260, 20, 150);
+let racket2 = new Rackets(820, 260, 20, 150);
 
 window.onkeydown = function (e) {
   console.log(e.key);
   switch (e.key) {
-    case 'ArrowUp':
-      racket1.y -= 20
+    case "ArrowUp":
+      racket1.y -= 20;
       break;
-    case 'ArrowDown':
-      racket1.y += 20
+    case "ArrowDown":
+      racket1.y += 20;
       break;
-    case 'w':
-      racket2.y -= 20
+    case "w":
+      racket2.y -= 20;
       break;
-    case 's':
-      racket2.y += 20
+    case "s":
+      racket2.y += 20;
       break;
   }
-
-}
-
-
-
+};
 
 function animate() {
   id = window.requestAnimationFrame(animate);
   ctx.drawImage(table, 0, 0, canvas.width, canvas.height);
-  racket1.drawRackets()
-  racket2.drawRackets()
+  racket1.drawRackets();
+  racket2.drawRackets();
   drawBall();
 }
 
-animate()
+animate();

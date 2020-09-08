@@ -200,6 +200,7 @@
   color: #a49c9a;
   font-size: 1.3rem;
   animation: pulse 3s linear infinite;
+  cursor: pointer;
 }
 
 @keyframes pulse {
