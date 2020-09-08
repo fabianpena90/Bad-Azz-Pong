@@ -3,7 +3,7 @@ canvas.width = 850;
 canvas.height = 650;
 const ctx = canvas.getContext("2d");
 const table = new Image();
-table.src = "img/table.jpg";
+table.src = "/public/img/table.jpg";
 let id = null;
 let score1 = 0;
 let score2 = 0;
@@ -28,21 +28,46 @@ class Rackets {
 let racket1 = new Rackets(10, 260, 20, 150);
 let racket2 = new Rackets(820, 260, 20, 150);
 
-// Creating Ball
-let ballRadius = 10;
-let x = canvas.width / 2;
-let y = canvas.height - 30;
-let dx = 3;
-let dy = -3;
+// // Creating Ball
+// let ballRadius = 10;
+// let x = canvas.width / 2;
+// let y = canvas.height - 30;
+// let dx = 3;
+// let dy = -3;
+
+const ball = {
+  x : canvas.width/2,
+  y : canvas.height/2,
+  radius : 10,
+  velocityX : 5,
+  velocityY : 5,
+  speed : 7,
+  color : "WHITE"
+}
+
+function resetBall(){
+  ball.x = canvas.width/2;
+  ball.y = canvas.height/2;
+  ball.velocityX = -ball.velocityX;
+  ball.speed = 7;
+}
+
+function drawArc(x, y, r, color){
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.arc(x,y,r,0,Math.PI*2,true);
+  ctx.closePath();
+  ctx.fill();
+}
 
 // Funtion to draw ball
-function drawBall() {
-  ctx.beginPath();
-  ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
-  ctx.fillStyle = "#fff";
-  ctx.fill();
-  ctx.closePath();
-}
+// function drawBall() {
+//   ctx.beginPath();
+//   ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+//   ctx.fillStyle = "#fff";
+//   ctx.fill();
+//   ctx.closePath();
+// }
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -101,20 +126,20 @@ function drawScore() {
 }
 
 // Mouse Paddles Control
-let isHovering = false
-canvas.addEventListener('mouseenter', e => {
-  isHovering = true
-});
+// let isHovering = false
+// canvas.addEventListener('mouseenter', e => {
+//   isHovering = true
+// });
 
-canvas.addEventListener('mouseleave', e => {
-  isHovering = false
-});
+// canvas.addEventListener('mouseleave', e => {
+//   isHovering = false
+// });
 
-canvas.addEventListener('mousemove', e => {
-  if (isHovering === true) {
-    racket1.y = e.offsetY - (racket1.h/2)
-  }
-});
+// canvas.addEventListener('mousemove', e => {
+//   if (isHovering === true) {
+//     racket1.y = e.offsetY - (racket1.h/2)
+//   }
+// });
 
 window.onkeydown = function (e) {
   // console.log(e.key);
