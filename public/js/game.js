@@ -9,7 +9,6 @@ document.querySelector("#create-room").onclick = function (e) {
 };
 
 table.src = "../img/table.jpg";
-console.log(table);
 let id = null;
 let score1 = 0;
 let score2 = 0;
