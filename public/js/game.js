@@ -34,6 +34,39 @@ function draw() {
     dy = -dy;
   }
 
+  let cooldown1 = false
+  let cooldown2 = false
+
+  if (racket1.x < x + ballRadius &&
+    racket1.x + racket1.w > x &&
+    racket1.y < y + ballRadius &&
+    racket1.y + racket1.h > y) {
+
+    //  non-functioning cooldown (always thinks cooldown1 is false)
+
+    //  if (cooldown1 == false){
+    //    console.log("cooldown activated")
+    //    cooldown1 = true
+    //    console.log(cooldown1)
+    //    dx = -dx;
+    //    setTimeout(function(){
+    //     console.log("cooldown ended")
+    //     cooldown1 = false
+    //   },3000)
+    //  } else {
+    //    console.log("cooldown1 is true")
+    //  }
+
+    dx = -dx
+  }
+
+  if (racket2.x < x + ballRadius &&
+    racket2.x + racket2.w > x &&
+    racket2.y < y + ballRadius &&
+    racket2.y + racket2.h > y) {
+    dx = -dx;
+  }
+
   x += dx;
   y += dy;
 }
@@ -59,7 +92,21 @@ class Rackets {
 let racket1 = new Rackets(10, 260, 20, 150)
 let racket2 = new Rackets(820, 260, 20, 150)
 
+let isHovering = false
 
+canvas.addEventListener('mouseenter', e => {
+  isHovering = true
+});
+
+canvas.addEventListener('mouseleave', e => {
+  isHovering = false
+});
+
+canvas.addEventListener('mousemove', e => {
+  if (isHovering === true) {
+    racket1.y = e.offsetY - (racket1.h/2)
+  }
+});
 
 window.onkeydown = function (e) {
   console.log(e.key);
