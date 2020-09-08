@@ -8,6 +8,7 @@
   </head>
   <body>
     <h1>BAD A$$ PONG</h1>
+    <button id="create-room">Create Room</button>
     <canvas id="canvas"></canvas>
 
     <section class="chat__section">
@@ -30,6 +31,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
       const socket = io();
+      let socketId = null;
+      socket.on("connect", () => {
+        console.log(socket.id);
+        socketId = socket.id;
+      });
       const urlParams = new URLSearchParams(window.location.search);
       const player = urlParams.get("player");
     </script>
