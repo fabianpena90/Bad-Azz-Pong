@@ -6,6 +6,8 @@ document.querySelector("#create-room").onclick = function (e) {
 // Select Canvas
 const canvas = document.querySelector('#canvas');
 const ctx = canvas.getContext('2d')
+const table = new Image();
+table.src = "../img/table.jpg";
 
 // create users paddles
 const player1 = {
@@ -74,7 +76,8 @@ function drawText(text, x, y, color) {
 
 function game() {
     // clear canvas
-    drawRect(0, 0, canvas.width, canvas.height, 'BLACK');
+    ctx.drawImage(table, 0, 0, canvas.width, canvas.height)
+    //drawRect(0, 0, canvas.width, canvas.height, 'BLACK');
 
     // draw the net
     drawNet();
