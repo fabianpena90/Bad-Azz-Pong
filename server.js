@@ -20,37 +20,38 @@ io.on("connection", (socket) => {
   console.log(socket.id);
   console.log(io.sockets.adapter.rooms, "rooooomoooos");
   socket.on("message", (msg) => {
-    socket.broadcast.emit("message", msg);
+    io.emit("message", msg);
   });
 
-  socket.on("create-room", (room) => {
-    console.log(room, " porcupine ", socket.id);
+  socket.on("keyToServer", (key) => {
+    io.emit("keyToClient", key);
+  })
 
-    let rooms = io.sockets.adapter.rooms;
-    let joined = false;
-    let n = 0;
-    for (let room in rooms) {
-      n++;
-      console.log(
-        room,
-        rooms[room].length
 
-        // rooms[room].Room.length
-      );
-      if ((rooms[room].length < 2) & !isNaN(n)) {
-        console.log("joining ", String(n));
-        socket.join(String(n));
-        joined = true;
-        break;
-      }
-    }
-    if (!joined) {
-      console.log("no rooms left so make new one", String(n));
-      socket.join(String(n));
-    }
 
-    console.log(rooms, "?");
-  });
+
+  // socket.on("create-room", (room) => {
+  //   console.log(room, " porcupine ", socket.id);
+
+  //   let rooms = io.sockets.adapter.rooms;
+  //   let joined = false;
+  //   let n = 0;
+  //   for (let room in rooms) {
+  //     n++;
+  //     if ((rooms[room].length < 2) & !isNaN(n)) {
+  //       console.log("joining ", String(n));
+  //       socket.join(String(n));
+  //       joined = true;
+  //       break;
+  //     }
+  //   }
+  //   if (!joined) {
+  //     console.log("no rooms left so make new one", String(n));
+  //     socket.join(String(n));
+  //   }
+
+  //   console.log(rooms, "?");
+  // });
   socket.on("disconnect", () => {
     console.log(socket.client.conn.server.clientsCount + " users connected");
   });
